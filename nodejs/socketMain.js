@@ -21,7 +21,6 @@ io.on('connection', (socket)=>{
     connectedSockets.splice(index, 1);
     socket.broadcast.emit('allSocketsAfterRemoval', connectedSockets,socket.id);
   });
-  console.log('new connection', socket.id);
   socket.on('broadcastNewMessage', (data)=>{
     socket.broadcast.emit('messageToAll', data);
   });
