@@ -1,113 +1,14 @@
-const cors = require('cors');
-const express = require('express') 
+const cors = require("cors");
+const express = require("express");
 const app = express();
+const shortRouter = require("./routes/short");
+// const longRouter = require("./routes/long");
 
 app.use(cors());
 app.use(express.json());
-
-
-const messages = [] ; 
-
-app.post('/messages',(req , res)=>{
-    messages.push(req.body);
-    res.status(204).end();
-
-})
-
-app.get('/messages',(req,res)=>{
-    res.json(messages);
-})
-
-
-
-
-
-
-
-
-
-app.listen(3000);
-console.log("ShortPolling running at http://localhost:3000");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+app.use("/short", shortRouter);
+// app.use("/long", longRouter);
+
+app.listen(3000, () => {
+  console.log("server listen on port 3000");
+});
